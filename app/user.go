@@ -29,6 +29,7 @@ import (
 	"github.com/mattermost/mattermost-server/mlog"
 	"github.com/mattermost/mattermost-server/model"
 	"github.com/mattermost/mattermost-server/utils"
+	"github.com/mattermost/mattermost-server/utils/fileutils"
 )
 
 const (
@@ -717,7 +718,7 @@ func getFont(initialFont string) (*truetype.Font, error) {
 		initialFont = "nunito-bold.ttf"
 	}
 
-	fontDir, _ := utils.FindDir("fonts")
+	fontDir, _ := fileutils.FindDir("fonts")
 	fontBytes, err := ioutil.ReadFile(filepath.Join(fontDir, initialFont))
 	if err != nil {
 		return nil, err
