@@ -12,6 +12,11 @@ services:
       MYSQL_PASSWORD: mostest
       MYSQL_USER: mmuser
       MYSQL_DATABASE: mattermost_test
+    tmpfs:
+     - /var/lib/mysql/:rw,noexec,nosuid,size=600m
+     - /tmp/:rw,noexec,nosuid,size=50m
+    volumes:
+     - "./docker/mysql.conf.d:/etc/mysql/conf.d"
   postgres:
     image: "postgres:9.4"
     restart: always
